@@ -11,11 +11,19 @@ export interface DropdownProps {
     searchable?: boolean;
     wipeSelectionOnClear?: boolean;
   };
-  classNames?: { list?: string; option?: string; selection?: string };
+  classNames?: {
+    list?: string;
+    option?: string;
+    selection?: string;
+    clear?: string;
+    wrapper?: string;
+  };
   styles?: {
     list?: CSSProperties;
     option?: CSSProperties;
     selection?: CSSProperties;
+    clear?: CSSProperties;
+    wrapper?: CSSProperties;
   };
   activeStyles?: {
     option?: CSSProperties;

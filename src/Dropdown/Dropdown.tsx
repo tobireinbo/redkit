@@ -20,6 +20,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   const classNames = { ...props.classNames };
   const styles = { ...props.styles };
   const activeStyles = { ...props.activeStyles };
+
   /*
    *
    * hooks
@@ -123,7 +124,8 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
 
   return (
     <div
-      style={{ position: "relative", width: "100%" }}
+      className={classNames.wrapper}
+      style={{ position: "relative", ...styles.wrapper }}
       onClick={handleDropdownClick}
       ref={wrapperRef}
     >
@@ -152,12 +154,18 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
           onChange={handleSearchInput}
           value={search}
           ref={searchInputRef}
-          placeholder={selection}
+          placeholder={options.find((o) => o.value === selection)?.title}
           disabled={!preferences.searchable}
         />
 
         {preferences.searchable && (
-          <button onClick={handleSearchClear}>clear</button>
+          <button
+            onClick={handleSearchClear}
+            className={classNames.clear}
+            style={styles.clear}
+          >
+            clear
+          </button>
         )}
       </div>
       {isOpen && _Dropdown}

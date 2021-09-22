@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React, { CSSProperties, useRef, useState } from "react";
-import { useOutsideClick } from "..";
+import { useOutsideClick } from "../util/hooks";
 
 import { BurgerMenuProps } from "./BurgerMenu.types";
 
@@ -59,11 +59,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
   );
 
   return (
-    <div
-      data-testid="BurgerMenu"
-      ref={ref}
-      style={{ position: "relative", width: "100%" }}
-    >
+    <div data-testid="BurgerMenu" ref={ref} style={{ position: "relative" }}>
       <button
         onClick={() => setOpen(!open)}
         style={styles.burger}
