@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React, { useEffect, useRef, useState } from "react";
-import { useOutsideClick } from "../util/hooks";
+import { useOutsideClick } from "../../util/hooks";
 
 import { DropdownProps, Option } from "./Dropdown.types";
 

@@ -6,12 +6,12 @@ variables
 
 :root {
   --white: hsl(0, 0%, 100%);
-  --white-focus: hsl(0, 0%, 92%);
-  --lightgray: hsl(0, 0%, 89%);
-  --lightgray-focus: hsl(0, 0%, 80%);
-  --lightergray: hsl(0, 0%, 86%);
-  --lightergray-focus: hsl(0, 0%, 75%);
-  --gray: hsl(0, 0%, 50%);
+  --white-focus: hsl(0, 0%, 98%);
+  --lightgray: hsl(0, 0%, 98%);
+  --lightgray-focus: hsl(0, 0%, 92%);
+  --lightergray: hsl(0, 0%, 92%);
+  --lightergray-focus: hsl(0, 0%, 88%);
+  --gray: hsl(0, 0%, 88%);
   --gray-focus: hsl(0, 0%, 60%);
   --darkergray: hsl(0, 0%, 22%);
   --darkergray-focus: hsl(0, 0%, 30%);
@@ -22,7 +22,17 @@ variables
   --blue: hsl(219, 100%, 56%);
   --red: hsl(0, 75%, 52%);
   --green: hsl(122, 98%, 40%);
+
   --accent-1: var(--blue);
+  --accent-1-focus: hsl(219, 100%, 72%);
+  --accent-1-gradient: linear-gradient(
+    270deg,
+    var(--accent-1-focus) 0%,
+    var(--accent-1) 100%
+  );
+  --warn-1: var(--red);
+  --warn-1-focus: hsl(0, 66%, 40%);
+
   --area-color-1: var(--white);
   --area-color-1-focus: var(--white-focus);
   --area-color-2: var(--lightgray);
@@ -31,6 +41,7 @@ variables
   --area-color-3-focus: var(--lightergray-focus);
   --area-color-4: var(--gray);
   --area-color-4-focus: var(--gray-focus);
+
   --contour-color-1: var(--lightergray);
   --contour-color-1-focus: var(--lightergray-focus);
   --contour-color-2: var(--gray);
@@ -39,25 +50,37 @@ variables
   --contour-color-3-focus: var(--darkergray-focus);
   --contour-color-4: var(--darkergray);
   --contour-color-4-focus: var(--darkergray-focus);
+
   --text-color-1: var(--black);
   --text-color-1-focus: var(--black-focus);
   --text-color-2: var(--darkgray);
   --text-color-2-focus: var(--darkgray-focus);
   --text-color-in-accent-1: var(--white);
+  --text-color-in-warn-1: var(--white);
+
   --size-1: 8px;
   --size-2: 14px;
   --size-3: 30px;
   --size-4: 50px;
   --size-5: 100px;
+
+  --dim-size-1: 300px;
+  --dim-size-2: 500px;
+  --dim-size-3: 800px;
+  --dim-size-4: 1200px;
+
   --text-size-1: xxx-large;
   --text-size-2: xx-large;
   --text-size-3: larger;
   --text-size-4: medium;
   --text-size-5: small;
+
   --sidedeck-width: 220px;
   --sidedeck-width-elapsed: 80px;
   --nav-height: 65px;
+
   --transition-fast: 0.2s ease;
+
   --shape-x: polygon(
     10% 0,
     0 10%,
@@ -156,21 +179,20 @@ variables
   elements
   ---------------------------------------------------
   */
-div,
-table,
-tr,
-form,
-fieldset,
-label,
-input,
-a {
+* {
   box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 input {
   outline: none;
   border: none;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input::placeholder {
@@ -181,6 +203,12 @@ label {
   display: inline-block;
 }
 
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text-size-5);
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   outline: none;
@@ -189,15 +217,23 @@ a {
 
 h1 {
   margin: 0;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-1);
   font-weight: normal;
   color: var(--text-color-1);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 b {
+  font-weight: 900;
+}
+
 h2 {
   margin: 0;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-2);
   font-weight: normal;
   color: var(--text-color-1);
@@ -205,7 +241,7 @@ h2 {
 
 h3 {
   margin: 0;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-3);
   font-weight: normal;
   color: var(--text-color-1);
@@ -213,7 +249,7 @@ h3 {
 
 h4 {
   margin: 0;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-4);
   font-weight: normal;
   color: var(--text-color-2);
@@ -221,7 +257,7 @@ h4 {
 
 h5 {
   margin: 0;
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-5);
   font-weight: normal;
   color: var(--text-color-2);
@@ -280,6 +316,31 @@ button {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.click {
+  overflow: hidden;
+  position: relative;
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+}
+.click:after {
+  content: "";
+  background: rgba(0, 0, 0, 0.2);
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  border-radius: 50%;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+.click:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
 
 /*sizing*/
 .w-max {
@@ -288,11 +349,60 @@ button {
 .w-50 {
   width: 50%;
 }
+.wmax-1 {
+  max-width: var(--dim-size-1);
+}
+.wmax-2 {
+  max-width: var(--dim-size-2);
+}
+.wmax-3 {
+  max-width: var(--dim-size-3);
+}
+.wmax-4 {
+  max-width: var(--dim-size-4);
+}
+.wmin-1 {
+  min-width: var(--dim-size-1);
+}
+.wmin-2 {
+  min-width: var(--dim-size-2);
+}
+.wmin-3 {
+  min-width: var(--dim-size-3);
+}
+.wmin-4 {
+  min-width: var(--dim-size-4);
+}
+
 .h-50 {
   height: 50%;
 }
 .h-max {
   height: 100%;
+}
+.hmax-1 {
+  max-height: var(--dim-size-1);
+}
+.hmax-2 {
+  max-height: var(--dim-size-2);
+}
+.hmax-3 {
+  max-height: var(--dim-size-3);
+}
+.hmax-4 {
+  max-height: var(--dim-size-4);
+}
+.hmin-1 {
+  min-height: var(--dim-size-1);
+}
+.hmin-2 {
+  min-height: var(--dim-size-2);
+}
+.hmin-3 {
+  min-height: var(--dim-size-3);
+}
+.hmin-4 {
+  min-height: var(--dim-size-4);
 }
 .hmin-100 {
   min-height: 100vh;
@@ -308,34 +418,9 @@ button {
 .rel {
   position: relative;
 }
-
-.grd {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
-  grid-auto-rows: 1fr;
-  grid-column-gap: var(--size-3);
-  grid-row-gap: var(--size-3);
-}
-
-.grd-size-1 {
-  grid-template-columns: repeat(auto-fit, calc(50% - var(--size-3) / 2));
-}
-
-.grd-size-2 {
-  grid-template-columns: repeat(auto-fit, 100%);
-}
-
-.grd::before {
-  content: "";
-  width: 0;
-  padding-bottom: 100%;
-  grid-row: 1 / 1;
-  grid-column: 1 / 1;
-}
-
-.grd > *:first-child {
-  grid-row: 1 / 1;
-  grid-column: 1 / 1;
+.sticky-top {
+  position: sticky;
+  top: 0;
 }
 
 .blk {
@@ -386,25 +471,25 @@ button {
   color: inherit;
 }
 .t-1 {
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: xxx-large;
   font-weight: normal;
   color: var(--text-color-1);
 }
 .t-2 {
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: xx-large;
   font-weight: normal;
   color: var(--text-color-1);
 }
 .t-3 {
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: large;
   font-weight: normal;
   color: var(--text-color-1);
 }
 .t-4 {
-  font-family: "Inter";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: small;
   font-weight: normal;
   color: var(--text-color-2);
@@ -454,8 +539,7 @@ button {
 .br-acc-1 {
   border: solid 1px var(--accent-1);
 }
-.onFocus_br-acc-1 {
-}
+
 .onFocus_br-acc-1:focus {
   border: solid 1px var(--accent-1);
 }
@@ -463,8 +547,15 @@ button {
 .br-1 {
   border: solid 1px var(--contour-color-1);
 }
-.onFocus_br-1 {
+.br-1_hvr {
+  border: solid 1px var(--contour-color-1);
+  transition: var(--transition-fast);
+  transition-property: border;
 }
+.br-1_hvr:hover {
+  border-color: var(--contour-color-1-focus);
+}
+
 .onFocus_br-1:focus {
   border: solid 1px var(--contour-color-1);
 }
@@ -484,8 +575,15 @@ button {
 .br-2 {
   border: solid 1px var(--contour-color-2);
 }
-.onFocus_br-2 {
+.br-2_hvr {
+  border: solid 1px var(--contour-color-2);
+  transition: var(--transition-fast);
+  transition-property: border;
 }
+.br-2_hvr:hover {
+  border-color: var(--contour-color-2-focus);
+}
+
 .onFocus_br-2:focus {
   border: solid 1px var(--contour-color-2);
 }
@@ -505,8 +603,15 @@ button {
 .br-3 {
   border: solid 1px var(--contour-color-3);
 }
-.onFocus_br-3 {
+.br-3_hvr {
+  border: solid 1px var(--contour-color-3);
+  transition: var(--transition-fast);
+  transition-property: border;
 }
+.br-1_hvr:hover {
+  border-color: var(--contour-color-3-focus);
+}
+
 .onFocus_br-3:focus {
   border: solid 1px var(--contour-color-3);
 }
@@ -526,8 +631,15 @@ button {
 .br-4 {
   border: solid 1px var(--contour-color-4);
 }
-.onFocus_br-4 {
+.br-4_hvr {
+  border: solid 1px var(--contour-color-4);
+  transition: var(--transition-fast);
+  transition-property: border;
 }
+.br-1_hvr:hover {
+  border-color: var(--contour-color-4-focus);
+}
+
 .onFocus_br-4:focus {
   border: solid 1px var(--contour-color-4);
 }
@@ -544,10 +656,14 @@ button {
   border-right: solid 1px var(--contour-color-4);
 }
 
+.br-acc-1 {
+  border: solid 1px var(--accent-1);
+}
+
 /*shadow*/
 .sdw-1 {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 20px 48px rgba(0, 0, 0, 0.05),
-    0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03), 0 20px 48px rgba(0, 0, 0, 0.03),
+    0 1px 4px rgba(0, 0, 0, 0.03);
 }
 .sdw-2 {
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
@@ -571,8 +687,7 @@ button {
 .bg-1_hvr:hover {
   background-color: var(--area-color-1-focus);
 }
-.onFocus_bg-1 {
-}
+
 .onFocus_bg-1:focus {
   background-color: var(--area-color-1);
 }
@@ -588,8 +703,7 @@ button {
 .bg-2_hvr:hover {
   background-color: var(--area-color-2-focus);
 }
-.onFocus_bg-2 {
-}
+
 .onFocus_bg-2:focus {
   background-color: var(--area-color-2);
 }
@@ -605,8 +719,7 @@ button {
 .bg-3_hvr:hover {
   background-color: var(--area-color-3-focus);
 }
-.onFocus_bg-3 {
-}
+
 .onFocus_bg-3:focus {
   background-color: var(--area-color-3);
 }
@@ -622,82 +735,75 @@ button {
 .bg-4_hvr:hover {
   background-color: var(--area-color-4-focus);
 }
-.onFocus_bg-4 {
-}
+
 .onFocus_bg-4:focus {
   background-color: var(--area-color-4);
 }
 
 .bg-acc-1 {
   background-color: var(--accent-1);
+  color: var(--text-color-in-accent-1);
+}
+.bg-acc-1 > * {
+  color: var(--text-color-in-accent-1);
 }
 .bg-acc-1_hvr {
   background-color: var(--accent-1);
+  color: var(--text-color-in-accent-1);
+}
+.bg-acc-1_hvr > * {
+  color: var(--text-color-in-accent-1);
 }
 .bg-acc-1_hvr:hover {
-  filter: saturate(0.8);
+  background-color: var(--accent-1-focus);
 }
 
-.bg-red {
-  background-color: var(--red);
+.bg-acc-1-grad {
+  background: var(--accent-1-gradient);
+  color: var(--text-color-in-accent-1);
 }
-.bg-red_hvr {
-  background-color: var(--red);
+.bg-acc-1-grad > * {
+  color: var(--text-color-in-accent-1);
 }
-.bg-red_hvr:hover {
-  filter: saturate(0.8);
+.bg-acc-1-grad_hvr {
+  background: var(--accent-1-gradient);
+  color: var(--text-color-in-accent-1);
+}
+.bg-acc-1-grad_hvr > * {
+  color: var(--text-color-in-accent-1);
+}
+.bg-acc-1-grad_hvr:hover {
+  filter: opacity(0.8);
 }
 
-.bg-adapt_hvr {
-  background-color: rgba(0, 0, 0, 0.08);
-  transition: var(--transition-fast);
-  transition-property: background-color;
+.bg-warn-1 {
+  background-color: var(--warn-1);
+  color: var(--text-color-in-warn-1);
 }
-.bg-adapt_hvr:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+.bg-warn-1 > * {
+  color: var(--text-color-in-warn-1);
 }
-
-.bg-contour {
-  background-color: var(--contour-color-1);
+.bg-warn-1_hvr {
+  background-color: var(--warn-1);
+  color: var(--text-color-in-warn-1);
 }
-.bg-contour_hvr {
-  background-color: var(--contour-color-1);
-  transition: var(--transition-fast);
-  transition-property: background-color;
+.bg-warn-1_hvr > * {
+  color: var(--text-color-in-warn-1);
 }
-.bg-contour_hvr:hover {
-  background-color: var(--contour-color-1-focus);
+.bg-warn-1_hvr:hover {
+  background-color: var(--warn-1-focus);
 }
 
 .bg-tran {
   background-color: transparent;
 }
-
 .bg-tran_hvr {
   background-color: transparent;
   transition: var(--transition-fast);
   transition-property: background-color;
 }
-
 .bg-tran_hvr:hover {
   background-color: rgba(0, 0, 0, 0.15);
-}
-
-.bg-input {
-  background-color: var(--area-color-1-focus);
-  border: solid 1px transparent;
-  transition: var(--transition-fast);
-  transition-property: background-color, border;
-  color: var(--text-color-1);
-}
-.bg-input::placeholder {
-  color: var(--text-color-1);
-}
-
-.bg-input:focus,
-.bg-input:focus-within {
-  background-color: var(--area-color-1);
-  border: solid 1px var(--accent-1);
 }
 
 /*overflow*/
@@ -777,6 +883,38 @@ button {
 }
 .pr-4 {
   padding-right: var(--size-4);
+}
+.px-1 {
+  padding-left: var(--size-1);
+  padding-right: var(--size-1);
+}
+.px-2 {
+  padding-left: var(--size-2);
+  padding-right: var(--size-2);
+}
+.px-3 {
+  padding-left: var(--size-3);
+  padding-right: var(--size-3);
+}
+.px-4 {
+  padding-left: var(--size-4);
+  padding-right: var(--size-4);
+}
+.py-1 {
+  padding-top: var(--size-1);
+  padding-bottom: var(--size-1);
+}
+.py-2 {
+  padding-top: var(--size-2);
+  padding-bottom: var(--size-2);
+}
+.py-3 {
+  padding-top: var(--size-3);
+  padding-bottom: var(--size-3);
+}
+.py-4 {
+  padding-top: var(--size-4);
+  padding-bottom: var(--size-4);
 }
 
 .m-0 {
@@ -866,4 +1004,29 @@ button {
 }
 .gap-4 {
   gap: var(--size-4);
+}
+
+._gapx-1 > * + * {
+  margin-left: var(--size-1);
+}
+._gapx-2 > * + * {
+  margin-left: var(--size-2);
+}
+._gapx-3 > * + * {
+  margin-left: var(--size-3);
+}
+._gapx-4 > * + * {
+  margin-left: var(--size-4);
+}
+._gapy-1 > * + * {
+  margin-top: var(--size-1);
+}
+._gapy-2 > * + * {
+  margin-top: var(--size-2);
+}
+._gapy-3 > * + * {
+  margin-top: var(--size-3);
+}
+._gapy-4 > * + * {
+  margin-top: var(--size-4);
 }

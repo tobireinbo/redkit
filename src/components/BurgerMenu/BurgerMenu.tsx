@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React, { CSSProperties, useRef, useState } from "react";
-import { useOutsideClick } from "../util/hooks";
+import { useOutsideClick } from "../../util/hooks";
 
 import { BurgerMenuProps } from "./BurgerMenu.types";
 
