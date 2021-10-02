@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React, { useEffect, useRef } from "react";
-import { useOutsideClick } from "../util/hooks";
+import { useOutsideClick } from "../../util/hooks";
 
 import { ModalProps } from "./Modal.types";
 

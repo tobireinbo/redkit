@@ -1,9 +1,7 @@
 // Generated with util/create-component.js
 import React from "react";
 import Dropdown from "./Dropdown";
-import StyledDropdown from "./Dropdown.styled";
 import { Option } from "./Dropdown.types";
-
 export default {
   title: "Dropdown",
 };
@@ -17,9 +15,6 @@ export const withOptions = () => (
   <Dropdown
     options={options}
     styles={{ selection: { background: "lightgray" } }}
+    initialSelection={"dnln2j3bjk"}
   />
-);
-
-export const styled = () => (
-  <StyledDropdown options={options} onChange={(value) => console.log(value)} />
 );

@@ -1,4 +1,3 @@
-import "../main.css";
 import React from "react";
 import { Variant } from "../types";
 
@@ -8,10 +7,10 @@ const Card: React.FC<
     HTMLDivElement
   > & { variant?: Variant; options?: { floating?: boolean } }
 > = (props) => {
-  const variant = props.variant ? props.variant : "1";
+  const { variant = "1", options, children, ...divProps } = props;
 
   let className = "flx-v rel _gapy-1 br-r-2 p-2";
-  if (props.options?.floating) {
+  if (options?.floating) {
     className += " sdw-1";
   }
 
@@ -34,8 +33,8 @@ const Card: React.FC<
   }
 
   return (
-    <div className={className} {...props}>
-      {props.children}
+    <div className={className} {...divProps}>
+      {children}
     </div>
   );
 };

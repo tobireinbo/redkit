@@ -15,6 +15,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
     showSelectionInList: true,
     wipeSelectionOnClear: true,
     searchable: true,
+    clearButton: true,
     ...props.preferences,
   };
   const classNames = { ...props.classNames };
@@ -113,8 +114,8 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
                 onChange={() => handleSelection(option)}
                 style={{ display: "none" }}
               />
-              <i className={option.icon}></i>
-              <h4>{option.title}</h4>
+              {option.icon && <i className={option.icon}></i>}
+              <div className="t-inherit">{option.title}</div>
             </label>
           );
         }
@@ -146,6 +147,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
           ></i>
         )}
         <input
+          className="t-inherit"
           style={{
             backgroundColor: "transparent",
             border: "none",
@@ -158,13 +160,13 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
           disabled={!preferences.searchable}
         />
 
-        {preferences.searchable && (
+        {preferences.searchable && preferences.clearButton && (
           <button
             onClick={handleSearchClear}
             className={classNames.clear}
             style={styles.clear}
           >
-            clear
+            <CloseCircle />
           </button>
         )}
       </div>
@@ -174,3 +176,19 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
 };
 
 export default Dropdown;
+
+export const CloseCircle: React.FC = () => (
+  <div
+    style={{
+      clipPath: `
+      polygon(
+        10% 0, 0 10%, 40% 50%, 0 90%, 10% 100%, 50% 60%,
+        90% 100%, 100% 90%, 60% 50%, 100% 10%, 90% 0, 50% 40%
+      )
+    `,
+      height: "10px",
+      width: "10px",
+      backgroundColor: "black",
+    }}
+  />
+);

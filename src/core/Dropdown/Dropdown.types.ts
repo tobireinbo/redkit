@@ -10,6 +10,7 @@ export interface DropdownProps {
     showSelectionInList?: boolean;
     searchable?: boolean;
     wipeSelectionOnClear?: boolean;
+    clearButton?: boolean;
   };
   classNames?: {
     list?: string;

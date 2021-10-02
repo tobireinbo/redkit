@@ -6,13 +6,13 @@ variables
 
 :root {
   --white: hsl(0, 0%, 100%);
-  --white-focus: hsl(0, 0%, 98%);
-  --lightgray: hsl(0, 0%, 98%);
+  --white-focus: hsl(0, 0%, 96%);
+  --lightgray: hsl(0, 0%, 96%);
   --lightgray-focus: hsl(0, 0%, 92%);
   --lightergray: hsl(0, 0%, 92%);
   --lightergray-focus: hsl(0, 0%, 88%);
   --gray: hsl(0, 0%, 88%);
-  --gray-focus: hsl(0, 0%, 60%);
+  --gray-focus: hsl(0, 0%, 80%);
   --darkergray: hsl(0, 0%, 22%);
   --darkergray-focus: hsl(0, 0%, 30%);
   --black: hsl(0, 0%, 0%);
@@ -64,8 +64,8 @@ variables
   --size-4: 50px;
   --size-5: 100px;
 
-  --dim-size-1: 300px;
-  --dim-size-2: 500px;
+  --dim-size-1: 200px;
+  --dim-size-2: 400px;
   --dim-size-3: 800px;
   --dim-size-4: 1200px;
 
@@ -133,7 +133,7 @@ variables
   ---------------------------------------------------
   */
 
-@keyframes open_dropdown {
+@keyframes scale_up {
   0% {
     transform: scaleY(0);
   }
@@ -142,7 +142,7 @@ variables
   }
 }
 
-@keyframes show_sysMsg {
+@keyframes blend_in {
   0% {
     opacity: 0;
   }
@@ -151,7 +151,7 @@ variables
   }
 }
 
-@keyframes open_modal {
+@keyframes scale_blend_in {
   0% {
     opacity: 0;
     transform: scale(0.8);
@@ -196,8 +196,12 @@ input {
 }
 
 input::placeholder {
-  color: black;
+  color: inherit;
   opacity: 1;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 label {
   display: inline-block;
@@ -526,6 +530,33 @@ button {
 .br-r-4 {
   border-radius: 15px;
 }
+
+.br-rt-1 {
+  border-radius: 2px 2px 0 0;
+}
+.br-rt-2 {
+  border-radius: 4px 4px 0 0;
+}
+.br-rt-3 {
+  border-radius: 10px 10px 0 0;
+}
+.br-rt-4 {
+  border-radius: 15px 15px 0 0;
+}
+
+.br-rb-1 {
+  border-radius: 0 0 2px 2px;
+}
+.br-rb-2 {
+  border-radius: 0 0 4px 4px;
+}
+.br-rb-3 {
+  border-radius: 0 0 10px 10px;
+}
+.br-rb-4 {
+  border-radius: 0 0 15px 15px;
+}
+
 .br-r-pill {
   border-radius: 999999px;
 }
@@ -1029,4 +1060,8 @@ button {
 }
 ._gapy-4 > * + * {
   margin-top: var(--size-4);
+}
+
+.scale_blend_in {
+  animation: scale_blend_in 0.3s;
 }
