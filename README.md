@@ -1,4 +1,3 @@
-# Redkit
-
-React Component Library
 # redkit
+
+![logo](./logo.svg)

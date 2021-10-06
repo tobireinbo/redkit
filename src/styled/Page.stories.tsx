@@ -3,10 +3,10 @@ import Card from "./Card/Card";
 import Button from "./Button/Button";
 import Container from "./Container/Container";
 import Dropdown from "./Dropdown/Dropdown";
+import Navbar from "./Navbar/Navbar";
 import Frame from "./Frame/Frame";
 import "./main.css";
 import { useTree } from "../util/hooks";
-
 export default {
   title: "Styled Page",
 };
@@ -22,7 +22,13 @@ export const Page1 = () => {
   console.log(tree);
 
   return (
-    <div className="flx-v w-max h-max flx-ac">
+    <div className="flx-v w-max h-max flx-ac br-3">
+      <Navbar
+        links={[
+          { route: "/projects", title: "Projects" },
+          { route: "/work", title: "Work" },
+        ]}
+      />
       <Container>
         <h1>
           <b>Page Title</b>
