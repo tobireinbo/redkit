@@ -5,7 +5,7 @@ import { Result } from "./core/ResultWrapper/ResultWrapper.types";
 import LoadingSpinner from "./core/LoadingSpinner/LoadingSpinner";
 import Modal from "./core/Modal/Modal";
 import BurgerMenu from "./core/BurgerMenu/BurgerMenu";
-import { useOutsideClick } from "./util/hooks";
+import { useOutsideClick, useTree } from "./util/hooks";
 import Styled from "./styled/index";
 
 export {
@@ -17,5 +17,6 @@ export {
   Option,
   Modal,
   useOutsideClick,
+  useTree,
   Styled,
 };

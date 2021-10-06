@@ -5,6 +5,7 @@ import Container from "./Container/Container";
 import Dropdown from "./Dropdown/Dropdown";
 import Frame from "./Frame/Frame";
 import "./main.css";
+import { useTree } from "../util/hooks";
 
 export default {
   title: "Styled Page",
@@ -12,6 +13,13 @@ export default {
 
 export const Page1 = () => {
   const [isFrameOpen, openFrame] = useState(true);
+
+  const { tree, flat, setFlat } = useTree<{ name: string }>([
+    { id: 1, data: { name: "Parent" } },
+    { id: 2, data: { name: "Child" }, parentId: 1 },
+  ]);
+
+  console.log(tree);
 
   return (
     <div className="flx-v w-max h-max flx-ac">
