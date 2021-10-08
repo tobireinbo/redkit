@@ -55,6 +55,7 @@ variables
   --text-color-1-focus: var(--black-focus);
   --text-color-2: var(--darkgray);
   --text-color-2-focus: var(--darkgray-focus);
+  --text-color-3: rgb(109, 109, 109);
   --text-color-in-accent-1: var(--white);
   --text-color-in-warn-1: var(--white);
 
@@ -210,6 +211,8 @@ label {
 p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-5);
+  line-height: 18px;
+  color: var(--text-color-3);
   margin: 0;
 }
 
@@ -479,6 +482,22 @@ button {
 .flx-wrap {
   display: flex;
   flex-wrap: wrap;
+}
+
+.z-0 {
+  z-index: 0;
+}
+.z-1 {
+  z-index: 1;
+}
+.z-2 {
+  z-index: 2;
+}
+.z-3 {
+  z-index: 3;
+}
+.z-100 {
+  z-index: 100;
 }
 
 /*text*/

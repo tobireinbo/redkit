@@ -3,10 +3,10 @@ import Card from "./Card/Card";
 import Button from "./Button/Button";
 import Container from "./Container/Container";
 import Dropdown from "./Dropdown/Dropdown";
-import Navbar from "./Navbar/Navbar";
 import Frame from "./Frame/Frame";
 import "./main.css";
 import { useTree } from "../util/hooks";
+import Tabs from "./Tabs/Tabs";
 export default {
   title: "Styled Page",
 };
@@ -23,12 +23,6 @@ export const Page1 = () => {
 
   return (
     <div className="flx-v w-max h-max flx-ac br-3">
-      <Navbar
-        links={[
-          { route: "/projects", title: "Projects" },
-          { route: "/work", title: "Work" },
-        ]}
-      />
       <Container>
         <h1>
           <b>Page Title</b>
@@ -112,6 +106,10 @@ export const Page1 = () => {
             />
           </Frame>
         )}
+        <Tabs links={["Projects", "Work", "About", "Contact", "Settings"]}>
+          <Card>projects</Card>
+          <Card>Work</Card>
+        </Tabs>
       </Container>
     </div>
   );

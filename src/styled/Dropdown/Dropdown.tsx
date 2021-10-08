@@ -11,7 +11,7 @@ const StyledDropdown: React.FC<DropdownProps> = (props) => {
         option: "p-1 w-max bg-1_hvr t-3",
         list: "br-rb-3 brr-1 brl-1 brb-1 w-max scrl-y hmax-1 sdw-1",
         clear: "bg-3_hvr pointer br-r-50 p-1",
-        wrapper: "w-max",
+        wrapper: "w-max z-3",
       }}
     />
   );
