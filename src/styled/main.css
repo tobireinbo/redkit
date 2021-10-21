@@ -70,11 +70,11 @@ variables
   --dim-size-3: 800px;
   --dim-size-4: 1200px;
 
-  --text-size-1: xxx-large;
-  --text-size-2: xx-large;
-  --text-size-3: larger;
-  --text-size-4: medium;
-  --text-size-5: small;
+  --text-size-1: 60px;
+  --text-size-2: 30px;
+  --text-size-3: 20px;
+  --text-size-4: 16px;
+  --text-size-5: 13px;
 
   --sidedeck-width: 220px;
   --sidedeck-width-elapsed: 80px;
@@ -190,6 +190,20 @@ body,
   height: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+span,
+input,
+label,
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+
 input {
   outline: none;
   border: none;
@@ -235,38 +249,30 @@ h2,
 h3,
 h4,
 h5 b {
-  font-weight: 900;
+  font-weight: 900 !important;
 }
 
 h2 {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-2);
-  font-weight: normal;
   color: var(--text-color-1);
 }
 
 h3 {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-3);
-  font-weight: normal;
   color: var(--text-color-1);
 }
 
 h4 {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-4);
-  font-weight: normal;
   color: var(--text-color-2);
 }
 
 h5 {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-size-5);
-  font-weight: normal;
   color: var(--text-color-2);
 }
 
@@ -508,27 +514,28 @@ button {
   color: inherit;
 }
 .t-1 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: xxx-large;
-  font-weight: normal;
+  font-size: var(--text-size-1);
+
   color: var(--text-color-1);
 }
 .t-2 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: xx-large;
-  font-weight: normal;
+  font-size: var(--text-size-2);
+
   color: var(--text-color-1);
 }
 .t-3 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
-  font-weight: normal;
+  font-size: var(--text-size-3);
+
   color: var(--text-color-1);
 }
 .t-4 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
-  font-weight: normal;
+  font-size: var(--text-size-4);
+
+  color: var(--text-color-2);
+}
+.t-5 {
+  font-size: var(--text-size-5);
+
   color: var(--text-color-2);
 }
 .t-in-acc-1 {

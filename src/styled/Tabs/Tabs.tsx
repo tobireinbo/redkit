@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 const Tabs: React.FC<{
   links?: Array<string>;
-}> = ({ links, children }) => {
+  initialTab?: string | number;
+}> = ({ links, children, initialTab = 0 }) => {
   const [currentTab, setCurrentTab] = useState<number>(0);
 
   return (
