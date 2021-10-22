@@ -1,15 +1,13 @@
 import React from "react";
-import { Variant } from "../types";
+import { Variant, Size, Common } from "../types";
 
 const Card: React.FC<
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
-  > & { variant?: Variant; options?: { floating?: boolean } }
-> = (props) => {
-  const { variant = "1", options, children, ...divProps } = props;
-
-  let className = "flx-v rel _gapy-1 br-r-2 p-2";
+  > & { options?: { floating?: boolean } } & Common
+> = ({ variant = "1", spacing = "2", options, children, ...divProps }) => {
+  let className = `p-${spacing} _gapy-${spacing} flx-v rel br-r-2`;
   if (options?.floating) {
     className += " sdw-1";
   }

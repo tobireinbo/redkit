@@ -1,13 +1,20 @@
 import React from "react";
-import { CloseCircle } from "../../core/Dropdown/Dropdown";
+import { Common } from "../types";
 
 const Frame: React.FC<
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
-  > & { title: string; onClose: () => void; animate?: boolean }
-> = (props) => {
-  const { title, onClose, children, animate, ...divProps } = props;
+  > & { title: string; onClose: () => void; animate?: boolean } & Common
+> = ({
+  spacing = "2",
+  addClass = "",
+  title,
+  onClose,
+  children,
+  animate,
+  ...divProps
+}) => {
   return (
     <div
       className={`br-2 br-r-2 ${animate ? "scale_blend_in" : ""}`}
@@ -28,7 +35,9 @@ const Frame: React.FC<
           />
         </button>
       </div>
-      <div className="p-2 flx-v rel _gapy-1">{children}</div>
+      <div className={`p-${spacing} _gapy-${spacing} flx-v rel ${addClass}`}>
+        {children}
+      </div>
     </div>
   );
 };
