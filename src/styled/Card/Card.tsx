@@ -2,10 +2,11 @@ import React from "react";
 import { Variant, Size, Common } from "../types";
 
 const Card: React.FC<
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > & { options?: { floating?: boolean } } & Common
+  Common &
+    React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLDivElement>,
+      HTMLDivElement
+    > & { options?: { floating?: boolean } }
 > = ({ variant = "1", spacing = "2", options, children, ...divProps }) => {
   let className = `p-${spacing} _gapy-${spacing} flx-v rel br-r-2`;
   if (options?.floating) {

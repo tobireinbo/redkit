@@ -10,7 +10,7 @@ const Container: React.FC<
   return (
     <div className="w-max flx-jc">
       <div
-        className={`w-max p-1 wmax-${size} _gapy-${spacing} ${addClasses}`}
+        className={`w-max p-${spacing} wmax-${size} _gapy-${spacing} ${addClasses}`}
         {...divProps}
       >
         {children}
