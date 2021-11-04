@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 
 // Generated with util/create-component.js
-export type Option<T> = { title: string; icon?: string; value: T };
+export type Option<T> = { title: string; value: T };
 
 export interface DropdownProps {
   options: Array<Option<any>>;
@@ -11,6 +11,7 @@ export interface DropdownProps {
     searchable?: boolean;
     wipeSelectionOnClear?: boolean;
     clearButton?: boolean;
+    throwErrorOnSelectionMismatch?: boolean;
   };
   classNames?: {
     list?: string;

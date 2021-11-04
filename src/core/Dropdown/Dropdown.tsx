@@ -16,6 +16,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
     wipeSelectionOnClear: true,
     searchable: true,
     clearButton: true,
+    throwErrorOnSelectionMismatch: false,
     ...props.preferences,
   };
   const classNames = { ...props.classNames };
@@ -41,7 +42,8 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
       initialSelection &&
       !options.find((o) => o.value === initialSelection)
     ) {
-      throw new Error("can't find initial selection in options");
+      if (preferences.throwErrorOnSelectionMismatch)
+        throw new Error("can't find initial selection in options");
     }
   }, [initialSelection]);
 
@@ -114,7 +116,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
                 onChange={() => handleSelection(option)}
                 style={{ display: "none" }}
               />
-              {option.icon && <i className={option.icon}></i>}
+
               <div className="t-inherit">{option.title}</div>
             </label>
           );
@@ -141,11 +143,6 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
           preferences.searchable && searchInputRef.current?.focus();
         }}
       >
-        {selection && (
-          <i
-            className={options.find((o) => o.value === selection).icon || ""}
-          ></i>
-        )}
         <input
           className="t-inherit"
           style={{
@@ -156,7 +153,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
           onChange={handleSearchInput}
           value={search}
           ref={searchInputRef}
-          placeholder={options.find((o) => o.value === selection)?.title}
+          placeholder={options.find((o) => o.value === selection)?.title || ""}
           disabled={!preferences.searchable}
         />
 
