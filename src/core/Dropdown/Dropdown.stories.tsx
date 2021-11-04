@@ -7,7 +7,7 @@ export default {
 };
 
 const options: Array<Option<string>> = [
-  { title: "Cow", value: "dnln2j3bjk" },
+  { title: "Cow", value: "dnln2j3bjk", breakAfter: true },
   { title: "Chicken", value: "fnwjön3n32ln" },
 ];
 

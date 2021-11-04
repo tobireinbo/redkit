@@ -102,23 +102,28 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
           return null;
         } else if (option.title.includes(search)) {
           return (
-            <label
-              className={classNames.option}
-              key={index}
-              style={Object.assign(
-                { display: "flex", alignItems: "center" },
-                !isSelected ? styles.option : activeStyles.option
-              )}
-            >
-              <input
-                type="radio"
-                name="options"
-                onChange={() => handleSelection(option)}
-                style={{ display: "none" }}
-              />
+            <>
+              <label
+                className={classNames.option}
+                key={index}
+                style={Object.assign(
+                  { display: "flex", alignItems: "center" },
+                  !isSelected ? styles.option : activeStyles.option
+                )}
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  onChange={() => handleSelection(option)}
+                  style={{ display: "none" }}
+                />
 
-              <div className="t-inherit">{option.title}</div>
-            </label>
+                <div className="t-inherit">{option.title}</div>
+              </label>
+              {option.breakAfter && (
+                <div className={classNames.break} style={styles.break} />
+              )}
+            </>
           );
         }
       })}

@@ -9,9 +9,10 @@ const StyledDropdown: React.FC<DropdownProps> = (props) => {
       classNames={{
         selection: "bg-1 br-1 br-r-2 p-1 w-max t-3 flx-ac onFocus_br-acc-1",
         option: "p-1 w-max bg-1_hvr t-3",
-        list: "br-rb-3 brr-1 brl-1 brb-1 w-max scrl-y hmax-1 sdw-1",
+        list: "br-rb-3 brr-1 brl-1 brb-1 w-max scrl-y hmax-1 sdw-1 bg-1",
         clear: "bg-3_hvr pointer br-r-50 p-1",
         wrapper: "w-max z-3",
+        break: "brb-1 mb-1 w-max pt-1",
       }}
     />
   );

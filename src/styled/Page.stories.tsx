@@ -118,10 +118,10 @@ export const Page1 = () => {
               <Styled.Dropdown
                 options={[
                   { value: "1", title: "First" },
-                  { value: "2", title: "Second" },
+                  { value: "2", title: "Second", breakAfter: true },
                   { value: "3", title: "Third" },
                   { value: "4", title: "Fourth" },
-                  { value: "5", title: "Fifth" },
+                  { value: "5", title: "Fifth", breakAfter: true },
                   { value: "6", title: "Sixth" },
                   { value: "7", title: "Seventh" },
                   { value: "8", title: "Eigth" },
