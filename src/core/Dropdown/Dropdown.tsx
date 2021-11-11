@@ -100,7 +100,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
 
         if (isSelected && !preferences.showSelectionInList) {
           return null;
-        } else if (option.title.includes(search)) {
+        } else if (option.title.toUpperCase().includes(search.toUpperCase())) {
           return (
             <>
               <label
